@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Container from 'react-bootstrap/Container';
 import SelectCptCode from "./components/SelectCptCode";
 import CostList from "./components/CostList";
 import AddCost from "./components/AddCost";
+import Stack from 'react-bootstrap/Stack';
 
 function App() {
   const [cptCodes, setCptCodes] = useState([]);
@@ -27,18 +29,20 @@ function App() {
   };
 
   return (
-    <div>
-      <SelectCptCode cptCodes={cptCodes} onSelectCptCode={onSelectCptCode} />
-      {selectedCptCode && (
-        <div>
-          <CostList costs={costs} />
-          <AddCost
-            selectedCptCode={selectedCptCode}
-            onCostAdded={onCostAdded}
-          />
-        </div>
-      )}
-    </div>
+    <Container className="app mt-4">
+      <Stack gap={5}>
+        <SelectCptCode cptCodes={cptCodes} onSelectCptCode={onSelectCptCode} />
+        {selectedCptCode && (
+          <> 
+            <CostList costs={costs} />
+            <AddCost
+              selectedCptCode={selectedCptCode}
+              onCostAdded={onCostAdded}
+            />
+          </>
+        )}
+      </Stack>
+    </Container>
   );
 }
 

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
 
 const AddCost = ({ selectedCptCode, onCostAdded }) => {
   const [facilityType, setFacilityType] = useState("");
@@ -37,36 +40,41 @@ const AddCost = ({ selectedCptCode, onCostAdded }) => {
   
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Add Facility Cost</h3>
-      <div>
-        <label>Facility Type:</label>
-        <input
-          type="text"
-          value={facilityType}
-          onChange={(e) => setFacilityType(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Cost:</label>
-        <input
-          type="number"
-          min="0"
-          value={cost}
-          onChange={(e) => setCost(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Copay:</label>
-        <input
-          type="number"
-          min="0"
-          value={copay}
-          onChange={(e) => setCopay(e.target.value)}
-        />
-      </div>
-      <button type="submit">Add Cost</button>
-    </form>
+    <Container className="form-container col-md-8">
+        <Form className="cost-form" onSubmit={handleSubmit}>
+            <h3>Add New Facility Cost</h3>
+            <Form.Group className="mb-3" controlId="formFacilityType">
+                <Form.Label>Facility Type:</Form.Label>
+                <Form.Control 
+                    type="text"
+                    placeholder="Enter facility type"
+                    required
+                    value={facilityType}
+                    onChange={(e) => setFacilityType(e.target.value)}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formCost">
+                <Form.Label>Cost:</Form.Label>
+                <Form.Control 
+                    type="number"
+                    min="0"
+                    placeholder="Enter cost"
+                    required
+                    value={cost}
+                    onChange={(e) => setCost(e.target.value)}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formCopay">
+                <Form.Label>Copay:</Form.Label>
+                <Form.Control 
+                    type="number"
+                    min="0"
+                    placeholder="Enter copay"
+                    required
+                    value={copay}
+                    onChange={(e) => setCopay(e.target.value)}/>
+            </Form.Group>
+            <Button variant="primary" type="submit">Add Cost</Button>
+        </Form>
+    </Container>
   );
 };
 

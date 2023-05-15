@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function SelectCptCode({ onSelectCptCode }) {
   const [cptCodes, setCptCodes] = useState([]);
@@ -19,17 +23,23 @@ function SelectCptCode({ onSelectCptCode }) {
   };
 
   return (
-    <div>
-      <label htmlFor="cptCodes">Select a CPT code:</label>
-      <select id="cptCodes" value={selectedCptCode} onChange={handleSelectChange}>
-        <option value="">--Please choose an option--</option>
-        {cptCodes.map((cptCode) => (
-          <option key={cptCode.id} value={cptCode.id}>
-            {cptCode.code}
-          </option>
-        ))}
-      </select>
-    </div>
+    <Container className="select-container col-md-8">
+        <Row className="justify-content-md-center align-items-center">
+            <Col xs="6" md="auto">    
+                <label className="me-auto" htmlFor="cptCodes">Select a CPT code:</label>
+            </Col>
+            <Col xs="6" md="auto">
+                <Form.Select aria-label="Select a CPT Code" id="cptCodes" value={selectedCptCode} onChange={handleSelectChange}>
+                    <option>Choose a Code</option>
+                    {cptCodes.map((cptCode) => (
+                        <option key={cptCode.id} value={cptCode.id}>
+                            {cptCode.code}
+                        </option>
+                    ))}
+                </Form.Select>
+            </Col>
+        </Row>
+    </Container>
   );
 }
 
