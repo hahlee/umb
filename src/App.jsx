@@ -1,25 +1,45 @@
-import './App.css'
+import { useState, useEffect } from "react";
+import axios from "axios";
+import SelectCptCode from "./components/SelectCptCode";
+import CostList from "./components/CostList";
+import AddCost from "./components/AddCost";
 
 function App() {
+  const [cptCodes, setCptCodes] = useState([]);
+  const [selectedCptCode, setSelectedCptCode] = useState(null);
+  const [costs, setCosts] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/cptCodes").then((response) => {
+      setCptCodes(response.data);
+    });
+  }, []);
+
+  const onSelectCptCode = (codeId) => {
+    setSelectedCptCode(codeId);
+    axios.get(`http://localhost:3001/cptCodes/${codeId}/costs`).then((response) => {
+      setCosts(response.data);
+    });
+  };
+
+  const onCostAdded = (newCost) => {
+    setCosts([...costs, newCost]);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://healthcare.utah.edu/" target="_blank" rel="noreferrer">
-          <img src="https://healthcare.utah.edu/themes/custom/theme_uou_clinical/logo.svg" className="logo uhealth" alt="UHealth logo" />
-        </a>
-      </div>
-      <h1>UMB React Project</h1>
-      <div className="card">
-        <p>
-          TODO: Create CPT select dropdown component and display the average cost.
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Check the README to get started!
-      </p>
-    </>
-  )
+    <div>
+      <SelectCptCode cptCodes={cptCodes} onSelectCptCode={onSelectCptCode} />
+      {selectedCptCode && (
+        <div>
+          <CostList costs={costs} />
+          <AddCost
+            selectedCptCode={selectedCptCode}
+            onCostAdded={onCostAdded}
+          />
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
