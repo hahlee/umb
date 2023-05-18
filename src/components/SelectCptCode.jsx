@@ -24,9 +24,9 @@ function SelectCptCode({ onSelectCptCode }) {
 
   return (
     <Container className="select-container col-md-8">
-        <Row className="justify-content-md-center align-items-center">
+        <Row className="align-items-center">
             <Col xs="6" md="auto">    
-                <label className="me-auto" htmlFor="cptCodes">Select a CPT code:</label>
+                <h4 className="me-auto text-red" htmlFor="cptCodes">Select a CPT code:</h4>
             </Col>
             <Col xs="6" md="auto">
                 <Form.Select aria-label="Select a CPT Code" id="cptCodes" value={selectedCptCode} onChange={handleSelectChange}>

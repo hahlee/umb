@@ -7,16 +7,14 @@ function CostList({ costs }) {
         <Table striped bordered hover className="cost-list">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Facility Type</th>
-                    <th>Cost</th>
-                    <th>Copay</th>
+                    <th className="text-dark">Facility Type</th>
+                    <th className="text-dark">Cost</th>
+                    <th className="text-dark">Copay</th>
                 </tr>
             </thead>
             <tbody>
                 {costs.map((cost) => (
                     <tr key={cost.id}>
-                        <td>{cost.id}</td>
                         <td>{cost.facilityType}</td>
                         <td>{cost.cost}</td>
                         <td>{cost.copay}</td>

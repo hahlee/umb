@@ -1,6 +1,54 @@
-#root {
-  max-width: 1280px;
+@font-face {
+  font-family: 'Sofia Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Sofia Pro Regular'), url('Sofia Pro Regular Az.otf') format('otf');
+}
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  height: 100vh;
+}
+
+* { 
+  font-family: 'Sofia Pro Regular', Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  background-color: #242424;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #B42C40;
+  border: none;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #C45B6A;
+}
+
+h1, h2, h3, h4, h5, h6, th {
+  text-transform: uppercase;
+}
+
+.text-red {
+  color: #B42C40;
+}
+
+p {
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }

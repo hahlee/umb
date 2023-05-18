@@ -42,7 +42,7 @@ const AddCost = ({ selectedCptCode, onCostAdded }) => {
   return (
     <Container className="form-container col-md-8">
         <Form className="cost-form" onSubmit={handleSubmit}>
-            <h3>Add New Facility Cost</h3>
+            <h3 className="text-red">Add New Facility Cost</h3>
             <Form.Group className="mb-3" controlId="formFacilityType">
                 <Form.Label>Facility Type:</Form.Label>
                 <Form.Control 

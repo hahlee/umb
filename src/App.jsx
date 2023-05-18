@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Container from 'react-bootstrap/Container';
+import Header from "./components/Header";
 import SelectCptCode from "./components/SelectCptCode";
 import CostList from "./components/CostList";
 import AddCost from "./components/AddCost";
@@ -29,20 +30,23 @@ function App() {
   };
 
   return (
-    <Container className="app mt-4">
-      <Stack gap={5}>
-        <SelectCptCode cptCodes={cptCodes} onSelectCptCode={onSelectCptCode} />
-        {selectedCptCode && (
-          <> 
-            <CostList costs={costs} />
-            <AddCost
-              selectedCptCode={selectedCptCode}
-              onCostAdded={onCostAdded}
-            />
-          </>
-        )}
-      </Stack>
-    </Container>
+    <>
+      <Header />
+      <Container className="app py-4">
+        <Stack gap={5}>
+          <SelectCptCode cptCodes={cptCodes} onSelectCptCode={onSelectCptCode} />
+          {selectedCptCode && (
+            <> 
+              <CostList costs={costs} />
+              <AddCost
+                selectedCptCode={selectedCptCode}
+                onCostAdded={onCostAdded}
+              />
+            </>
+          )}
+        </Stack>
+      </Container>
+    </>
   );
 }
 
