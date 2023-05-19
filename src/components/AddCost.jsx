@@ -72,7 +72,7 @@ const AddCost = ({ selectedCptCode, onCostAdded }) => {
                     value={copay}
                     onChange={(e) => setCopay(e.target.value)}/>
             </Form.Group>
-            <Button variant="primary" type="submit">Add Cost</Button>
+            <Button variant="primary" className="border-0" type="submit">Add Cost</Button>
         </Form>
     </Container>
   );

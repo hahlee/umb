@@ -24,16 +24,15 @@
 }
 
 .header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
   background-color: #242424;
-  color: white;
+}
+
+.img-fluid {
+  width: 400px;
 }
 
 .btn-primary {
   background-color: #B42C40;
-  border: none;
   font-weight: 500;
 }
 
